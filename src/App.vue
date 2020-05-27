@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div class="stories-wrapper">
-      {{ getTimestamp("2020-09-05") }}
       <ul
         class="stories-list"
         :width="getFullWidth"
