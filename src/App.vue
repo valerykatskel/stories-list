@@ -9,9 +9,9 @@
         <li
           v-for="story in stories"
           :key="story.id"
-          :class="{ viewed: !story.viewedDate }"
+          :class="{ new: story.viewedDate }"
         >
-          <story-item :story-item="story" />
+          <story-item :story-item="story" @on-click="onClickStory" />
         </li>
       </ul>
     </div>
@@ -71,7 +71,7 @@ export default {
           title:
             "Трамп пригрозил закрыть социальные сети из-за конфликта с Twitter. Об этом он сообщил в Twitter",
           section: "Популярное",
-          viewedDate: 0,
+          viewedDate: 1590598730,
           publishDate: 1590598350,
           image:
             "https://dh.img.tyt.by/720x720s/n/06/f/trump_tramp_27042020.jpg"
@@ -134,6 +134,9 @@ export default {
       console.log(dt);
       //return new Date().parse(`${month[m]} ${d}, ${y}`).getTime();
       return new Date(`${datetime} 00:00:00`).getTime() / 1000;
+    },
+    onClickStory: item => {
+      console.log(item);
     }
   },
   mounted() {
@@ -170,12 +173,12 @@ body {
     cursor: pointer;
 
     img {
-      border: 2px solid #ff5555;
+      border: 2px solid transparent;
       box-sizing: border-box;
     }
-    &.viewed {
+    &.new {
       img {
-        border-color: transparent;
+        border-color: #ff5555;
       }
     }
   }
