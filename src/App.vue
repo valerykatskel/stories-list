@@ -7,11 +7,15 @@
         :style="{ width: getFullWidth + 'px' }"
       >
         <li
-          v-for="story in stories"
+          v-for="(story, id) in stories"
           :key="story.id"
-          :class="{ new: story.viewedDate }"
+          :class="{ new: story.viewedDate > 0 }"
         >
-          <story-item :story-item="story" @on-click="onClickStory" />
+          <story-item
+            :item-id="id"
+            :story-item="story"
+            @on-click="onClickStory"
+          />
         </li>
       </ul>
     </div>
@@ -30,130 +34,111 @@ export default {
       storiesWidth: 3,
       stories: [
         {
-          id: 0,
-          title:
-            "Турция и Черногория — возможно, Украина — пока нет. Куда белорусы смогут поехать на отдых этим летом",
-          section: "Новость дня",
-          viewedDate: 1590598820,
+          title: "Story #1",
+          viewedDate: 0,
           publishDate: 1590598650,
           image:
-            "https://dh.img.tyt.by/552x368c/n/reuters/09/10/turciya_otdykh_reuters_rtr1tikc.jpg"
+            "https://dh.img.tyt.by/552x368c/n/reuters/09/10/turciya_otdykh_reuters_rtr1tikc.jpg",
+          slides: [
+            {
+              type: "video",
+              url:
+                "https://dh.img.tyt.by/news/special/stories/stop_oduvanchik_voda_02.mp4",
+              title: "На торгах 13 июля доллар и евро подешевели",
+              subtitle: "Доллар снизился на BYN 0,0115 — до 2,4185 рубля"
+            }
+          ]
         },
 
         {
-          id: 1,
-          title:
-            "Вот что придумали столичные заведения, чтобы работать даже в кризис",
-          section: "Деньги и власть длинное",
-          viewedDate: 1590598800,
+          title: "Story #2",
+          viewedDate: 0,
           publishDate: 1590598640,
           image:
-            "https://img.tyt.by/n/afisha/08/9/seafoodbar_by_john_dory_take_away.jpg"
+            "https://img.tyt.by/n/afisha/08/9/seafoodbar_by_john_dory_take_away.jpg",
+          slides: []
         },
 
         {
-          id: 2,
-          title:
-            "Беларусь вошла в топ-10 стран по количеству зараженных COVID-19 на миллион населения",
-          section: "Коронавирус",
-          viewedDate: 1590598790,
+          title: "Story #3",
+          viewedDate: 0,
           publishDate: 1590598550,
           image:
-            "https://dh.img.tyt.by/720x720s/n/zamirovskiy/0e/7/05_dezinfekciya_transporta_koronavirus_20200401_zam_tutby_phsl.jpg"
+            "https://dh.img.tyt.by/720x720s/n/zamirovskiy/0e/7/05_dezinfekciya_transporta_koronavirus_20200401_zam_tutby_phsl.jpg",
+          slides: []
         },
         {
-          id: 3,
-          title:
-            "Экономист о ВВП в 100 млрд долларов: «Не вижу предпосылок для такого оптимизма». Вот почему",
-          section: "Доллар",
-          viewedDate: 1590598750,
+          title: "Story #4",
+          viewedDate: 0,
           publishDate: 1590598450,
           image:
-            "https://dh.img.tyt.by/720x720s/n/ekonomika/0a/f/dengi_pensiya_zarplata_monety_valyuta_rubl.jpg"
+            "https://dh.img.tyt.by/720x720s/n/ekonomika/0a/f/dengi_pensiya_zarplata_monety_valyuta_rubl.jpg",
+          slides: []
         },
         {
-          id: 4,
-          title:
-            "Трамп пригрозил закрыть социальные сети из-за конфликта с Twitter. Об этом он сообщил в Twitter",
-          section: "Популярное",
+          title: "Story #5",
           viewedDate: 1590598730,
           publishDate: 1590598350,
           image:
-            "https://dh.img.tyt.by/720x720s/n/06/f/trump_tramp_27042020.jpg"
+            "https://dh.img.tyt.by/720x720s/n/06/f/trump_tramp_27042020.jpg",
+          slides: []
         },
         {
-          id: 5,
-          title:
-            "Турция и Черногория — возможно, Украина — пока нет. Куда белорусы смогут поехать на отдых этим летом",
-          section: "Новость дня",
+          title: "Story #6",
           viewedDate: 0,
           publishDate: 1590598320,
           image:
-            "https://dh.img.tyt.by/552x368c/n/reuters/09/10/turciya_otdykh_reuters_rtr1tikc.jpg"
+            "https://dh.img.tyt.by/552x368c/n/reuters/09/10/turciya_otdykh_reuters_rtr1tikc.jpg",
+          slides: []
         },
 
         {
-          id: 6,
-          title:
-            "Вот что придумали столичные заведения, чтобы работать даже в кризис",
-          section: "Деньги и власть длинное",
+          title: "Story #7",
           viewedDate: 0,
           publishDate: 1590598300,
           image:
-            "https://img.tyt.by/n/afisha/08/9/seafoodbar_by_john_dory_take_away.jpg"
+            "https://img.tyt.by/n/afisha/08/9/seafoodbar_by_john_dory_take_away.jpg",
+          slides: []
         },
 
         {
-          id: 7,
-          title:
-            "Беларусь вошла в топ-10 стран по количеству зараженных COVID-19 на миллион населения",
-          section: "Коронавирус",
-          viewedDate: 0,
+          title: "Story #8",
+          viewedDate: 1590598790,
           publishDate: 1590598250,
           image:
-            "https://dh.img.tyt.by/720x720s/n/zamirovskiy/0e/7/05_dezinfekciya_transporta_koronavirus_20200401_zam_tutby_phsl.jpg"
+            "https://dh.img.tyt.by/720x720s/n/zamirovskiy/0e/7/05_dezinfekciya_transporta_koronavirus_20200401_zam_tutby_phsl.jpg",
+          slides: []
         },
         {
-          id: 8,
-          title:
-            "Экономист о ВВП в 100 млрд долларов: «Не вижу предпосылок для такого оптимизма». Вот почему",
-          section: "Доллар",
-          viewedDate: 0,
+          title: "Story #9",
+          viewedDate: 1590598800,
           publishDate: 1590598220,
           image:
-            "https://dh.img.tyt.by/720x720s/n/ekonomika/0a/f/dengi_pensiya_zarplata_monety_valyuta_rubl.jpg"
+            "https://dh.img.tyt.by/720x720s/n/ekonomika/0a/f/dengi_pensiya_zarplata_monety_valyuta_rubl.jpg",
+          slides: []
         },
         {
-          id: 9,
-          title:
-            "Трамп пригрозил закрыть социальные сети из-за конфликта с Twitter. Об этом он сообщил в Twitter",
-          section: "Популярное",
-          viewedDate: 0,
+          title: "Story #10",
+          viewedDate: 1590598750,
           publishDate: 1590598180,
           image:
-            "https://dh.img.tyt.by/720x720s/n/06/f/trump_tramp_27042020.jpg"
+            "https://dh.img.tyt.by/720x720s/n/06/f/trump_tramp_27042020.jpg",
+          slides: []
         }
       ]
     };
   },
   methods: {
     getTimestamp: datetime => {
-      // datetime = '28.05.2020'
       const dt = datetime.split(".");
 
       console.log(dt);
-      //return new Date().parse(`${month[m]} ${d}, ${y}`).getTime();
       return new Date(`${datetime} 00:00:00`).getTime() / 1000;
     },
     onClickStory: function(item) {
-      console.log(item);
-      const now = parseInt(new Date().getTime() / 1000);
-
-      //console.log(this);
-      this.stories.forEach(el => {
-        console.log(`el.id: ${el.id}  item.id: ${item.id}`);
-        if (el.id === item.id) {
-          el.viewedDate = now;
+      this.stories.forEach((el, id) => {
+        if (id === item.id) {
+          el.viewedDate = Date.now();
         }
       });
     }
@@ -192,12 +177,12 @@ body {
     cursor: pointer;
 
     img {
-      border: 2px solid transparent;
+      border: 2px solid #ff5555;
       box-sizing: border-box;
     }
     &.new {
       img {
-        border-color: #ff5555;
+        border-color: transparent;
       }
     }
   }

@@ -1,8 +1,8 @@
 <template>
-  <div class="story" @click="clickStory(storyItem)">
+  <div class="story" @click="showStory(storyItem)">
     <img :src="storyItem.image" />
     <div class="story-title">
-      <span>{{ storyItem.section }}</span>
+      <span>{{ storyItem.title }}</span>
     </div>
   </div>
 </template>
@@ -11,15 +11,12 @@
 export default {
   name: "StoryItem",
   props: {
-    storyItem: Object
+    storyItem: Object,
+    itemId: Number
   },
   methods: {
-    clickStory: function(item) {
-      // const params = {
-      //   item: item
-      // };
-      //this.$emit("on-click", params);
-      this.$emit("on-click", item);
+    showStory: function(item) {
+      this.$emit("on-click", { id: this.itemId, ...item });
     }
   }
 };
