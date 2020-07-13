@@ -15,11 +15,11 @@ export default {
   },
   methods: {
     clickStory: function(item) {
-      const params = {
-        item: item
-      };
+      // const params = {
+      //   item: item
+      // };
       //this.$emit("on-click", params);
-      this.$emit("on-click", params);
+      this.$emit("on-click", item);
     }
   }
 };

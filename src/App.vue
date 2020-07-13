@@ -30,6 +30,7 @@ export default {
       storiesWidth: 3,
       stories: [
         {
+          id: 0,
           title:
             "Турция и Черногория — возможно, Украина — пока нет. Куда белорусы смогут поехать на отдых этим летом",
           section: "Новость дня",
@@ -40,6 +41,7 @@ export default {
         },
 
         {
+          id: 1,
           title:
             "Вот что придумали столичные заведения, чтобы работать даже в кризис",
           section: "Деньги и власть длинное",
@@ -50,6 +52,7 @@ export default {
         },
 
         {
+          id: 2,
           title:
             "Беларусь вошла в топ-10 стран по количеству зараженных COVID-19 на миллион населения",
           section: "Коронавирус",
@@ -59,6 +62,7 @@ export default {
             "https://dh.img.tyt.by/720x720s/n/zamirovskiy/0e/7/05_dezinfekciya_transporta_koronavirus_20200401_zam_tutby_phsl.jpg"
         },
         {
+          id: 3,
           title:
             "Экономист о ВВП в 100 млрд долларов: «Не вижу предпосылок для такого оптимизма». Вот почему",
           section: "Доллар",
@@ -68,6 +72,7 @@ export default {
             "https://dh.img.tyt.by/720x720s/n/ekonomika/0a/f/dengi_pensiya_zarplata_monety_valyuta_rubl.jpg"
         },
         {
+          id: 4,
           title:
             "Трамп пригрозил закрыть социальные сети из-за конфликта с Twitter. Об этом он сообщил в Twitter",
           section: "Популярное",
@@ -77,6 +82,7 @@ export default {
             "https://dh.img.tyt.by/720x720s/n/06/f/trump_tramp_27042020.jpg"
         },
         {
+          id: 5,
           title:
             "Турция и Черногория — возможно, Украина — пока нет. Куда белорусы смогут поехать на отдых этим летом",
           section: "Новость дня",
@@ -87,6 +93,7 @@ export default {
         },
 
         {
+          id: 6,
           title:
             "Вот что придумали столичные заведения, чтобы работать даже в кризис",
           section: "Деньги и власть длинное",
@@ -97,6 +104,7 @@ export default {
         },
 
         {
+          id: 7,
           title:
             "Беларусь вошла в топ-10 стран по количеству зараженных COVID-19 на миллион населения",
           section: "Коронавирус",
@@ -106,6 +114,7 @@ export default {
             "https://dh.img.tyt.by/720x720s/n/zamirovskiy/0e/7/05_dezinfekciya_transporta_koronavirus_20200401_zam_tutby_phsl.jpg"
         },
         {
+          id: 8,
           title:
             "Экономист о ВВП в 100 млрд долларов: «Не вижу предпосылок для такого оптимизма». Вот почему",
           section: "Доллар",
@@ -115,6 +124,7 @@ export default {
             "https://dh.img.tyt.by/720x720s/n/ekonomika/0a/f/dengi_pensiya_zarplata_monety_valyuta_rubl.jpg"
         },
         {
+          id: 9,
           title:
             "Трамп пригрозил закрыть социальные сети из-за конфликта с Twitter. Об этом он сообщил в Twitter",
           section: "Популярное",
@@ -135,8 +145,17 @@ export default {
       //return new Date().parse(`${month[m]} ${d}, ${y}`).getTime();
       return new Date(`${datetime} 00:00:00`).getTime() / 1000;
     },
-    onClickStory: item => {
+    onClickStory: function(item) {
       console.log(item);
+      const now = parseInt(new Date().getTime() / 1000);
+
+      //console.log(this);
+      this.stories.forEach(el => {
+        console.log(`el.id: ${el.id}  item.id: ${item.id}`);
+        if (el.id === item.id) {
+          el.viewedDate = now;
+        }
+      });
     }
   },
   mounted() {
